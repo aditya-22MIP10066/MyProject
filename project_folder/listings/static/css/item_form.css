@@ -1,0 +1,231 @@
+/* General Body and Background Styles (Repeated for consistency) */
+*{
+    margin: 0px;
+    padding: 0px;
+}
+body {
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: auto; 
+    color: #f0f0f0;
+
+    /* Animated Gradient Background */
+    background: linear-gradient(135deg, #a8c0ff, #3f2b96);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Main Heading */
+h1 {
+    color: #ffffff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    font-weight: 700;
+}
+
+/* Form Container (Glassmorphic) */
+form {
+    /* Glassmorphism properties */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    
+    padding: 40px;
+    border-radius: 20px;
+    max-width: 600px; /* Wider for forms */
+    width: 90%;
+    box-sizing: border-box;
+    text-align: left; /* Align form fields to left */
+}
+
+form p {
+    margin-bottom: 20px; /* Space between form fields */
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #e0e0e0;
+    font-size: 1.1em;
+}
+
+/* Claymorphic Input Fields */
+form input[type="text"],
+form input[type="number"],
+form textarea {
+    width: calc(100% - 30px);
+    padding: 15px;
+    border: none;
+    border-radius: 15px;
+    box-sizing: border-box;
+    font-size: 17px;
+    color: #333;
+    background-color: #e0eafc;
+    /* Claymorphism: Soft inner shadow */
+    box-shadow: inset 4px 4px 8px rgba(180, 190, 210, 0.5),
+                inset -4px -4px 8px rgba(255, 255, 255, 0.9);
+    transition: all 0.3s ease;
+}
+
+form input[type="text"]:focus,
+form input[type="number"]:focus,
+form textarea:focus {
+    outline: none;
+    box-shadow: inset 2px 2px 5px rgba(180, 190, 210, 0.7),
+                inset -2px -2px 5px rgba(255, 255, 255, 0.8);
+    background-color: #eaf1f5;
+}
+
+form textarea {
+    resize: vertical;
+    min-height: 120px; /* Taller textarea */
+}
+
+/* File Input - challenging to style consistently across browsers */
+form input[type="file"] {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.3); /* A more standard look for file input */
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    font-size: 1em;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+form input[type="file"]::-webkit-file-upload-button {
+    background-color: #6a4c93; /* Claymorphic button style */
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: bold;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2),
+                -3px -3px 6px rgba(255, 255, 255, 0.7);
+    transition: all 0.3s ease;
+}
+
+form input[type="file"]::-webkit-file-upload-button:hover {
+    background-color: #8c71b6;
+    transform: translateY(-2px);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3),
+                -5px -5px 10px rgba(255, 255, 255, 0.9);
+}
+
+
+/* Save Listing Button (Claymorphic) */
+.button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #4CAF50; /* Green accent for 'save' */
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 25px;
+    letter-spacing: 0.5px;
+    /* Claymorphism: Soft, lifted effect */
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.2),
+                -6px -6px 12px rgba(255, 255, 255, 0.7);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.button:hover {
+    background-color: #66BB6A;
+    transform: translateY(-3px);
+    box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.3),
+                -8px -8px 16px rgba(255, 255, 255, 0.9);
+}
+
+.button:active {
+    background-color: #388E3C;
+    transform: translateY(1px);
+    box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.2),
+                inset -3px -3px 6px rgba(255, 255, 255, 0.6);
+}
+
+/* Back Link */
+.back-link {
+    display: inline-block;
+    margin-top: 30px;
+    color: #e0f2f7;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1em;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.back-link:hover {
+    color: #ffffff;
+    text-decoration: underline;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
+}
+
+/* Error List */
+.errorlist {
+    color: #ffcccc;
+    list-style-type: none;
+    padding: 0;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    font-size: 0.95em;
+    background: rgba(255, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2.2em;
+    }
+    form {
+        padding: 30px 20px;
+        border-radius: 15px;
+    }
+    form input[type="text"],
+    form input[type="number"],
+    form textarea {
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 12px;
+    }
+    form input[type="file"] {
+        padding: 12px;
+    }
+    form input[type="file"]::-webkit-file-upload-button {
+        padding: 6px 12px;
+        border-radius: 8px;
+    }
+    .button {
+        padding: 12px 20px;
+        font-size: 1.1em;
+        border-radius: 12px;
+    }
+    .back-link {
+        font-size: 1em;
+    }
+}

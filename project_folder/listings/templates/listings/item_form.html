@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add/Edit Item</title>
+    <link rel="stylesheet" href="{% static 'css/item_form.css' %}">
+</head>
+<body>
+    <h1>{% if form.instance.pk %}Edit Item{% else %}Add New Item{% endif %}</h1>
+    {# NEW: Add enctype="multipart/form-data" for file uploads #}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }} {# Renders all form fields as paragraphs #}
+        <button type="submit" class="button">Save Listing</button>
+    </form>
+    <p><a href="{% url 'item_list' %}" class="back-link">← Back to All Listings</a></p>
+</body>
+</html>

@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ item.name }} Details</title>
+    <link rel="stylesheet" href="{% static 'css/item_detail.css' %}">
+</head>
+<body>
+    <h1>{{ item.name }}</h1>
+    <div class="item-details">
+        {# NEW: Display a larger image on the detail page #}
+        {% if item.image %}
+            <img src="{{ item.image.url }}" alt="{{ item.name }}" style="max-width:100%; height:auto; border-radius: 8px; margin-bottom: 15px;">
+        {% endif %}
+
+        <p><strong>Description:</strong> {{ item.description }}</p>
+        <p><strong>Price:</strong> ₹{{ item.price }}</p>
+        <p><strong>Quantity:</strong> {{ item.quantity }}</p>
+        <p><small>Listed on: {{ item.created_at|date:"M d, Y H:i" }}</small></p>
+
+        {% if user.is_authenticated and user == item.user %}
+            <div class="button-group">
+                <a href="{% url 'item_update' pk=item.pk %}" class="button edit-button">Edit Listing</a>
+                <a href="{% url 'item_delete' pk=item.pk %}" class="button delete-button">Delete Listing</a>
+            </div>
+        {% endif %}
+    </div>
+    <p><a href="{% url 'item_list' %}" class="back-link">← Back to All Listings</a></p>
+</body>
+</html>

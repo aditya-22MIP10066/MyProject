@@ -1,0 +1,268 @@
+/* General Body and Background Styles */
+/* Removed global * reset here as it can cause conflicts,
+   it's better to reset specific elements if needed. */
+html, body { /* Apply to html and body for full viewport height */
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    color: #f0f0f0;
+    min-height: 100vh; /* Ensure it covers full viewport */
+    box-sizing: border-box;
+    overflow-x: hidden; /* Prevent horizontal scrollbar from animations */
+    overflow-y: auto; /* Allow vertical scrolling if content gets too long */
+
+    /* Animated Gradient Background */
+    background: linear-gradient(135deg, #a8c0ff, #3f2b96);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* New container for main content to better manage flow */
+.main-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally within the wrapper */
+    width: 100%;
+    /* max-width: 1200px; Max width for the entire content area */
+    padding: 20px; /* Add overall padding */
+    box-sizing: border-box;
+}
+
+
+/* Auth Links and Logout Button (Claymorphic for interactivity) */
+.auth-links {
+    width: 100%; /* Take full width of its parent (.main-content-wrapper) */
+    text-align: right;
+    margin-bottom: 20px;
+    padding: 0; /* No extra padding here as main-content-wrapper handles it */
+    box-sizing: border-box;
+}
+
+.auth-links span {
+    color: #ffffff;
+    font-weight: 500;
+    margin-right: 15px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.auth-links a,
+.auth-links button {
+    display: inline-block;
+    padding: 8px 15px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 12px; /* Claymorphic rounded corners */
+    background-color: #6a4c93; /* Claymorphic button color */
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.95em;
+    text-decoration: none;
+    /* Claymorphism: Soft, lifted effect */
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2),
+                -3px -3px 6px rgba(255, 255, 255, 0.7);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.auth-links button {
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.auth-links a:hover,
+.auth-links button:hover {
+    background-color: #8c71b6; /* Lighter on hover */
+    transform: translateY(-2px);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3),
+                -5px -5px 10px rgba(255, 255, 255, 0.9);
+}
+
+.auth-links a:active,
+.auth-links button:active {
+    background-color: #553e7f; /* Darker on active */
+    transform: translateY(1px);
+    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.2),
+                inset -2px -2px 4px rgba(255, 255, 255, 0.6);
+}
+
+/* Main Heading */
+h1 {
+    color: #ffffff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    margin-bottom: 30px;
+    font-size: 2.8em;
+    font-weight: 700;
+    text-align: center; /* Center heading */
+    width: 100%; /* Ensure heading takes full width of wrapper */
+}
+
+/* Add New Item Button (Claymorphic) */
+.add-item-button {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 30px;
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.2),
+                -6px -6px 12px rgba(255, 255, 255, 0.7);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.add-item-button:hover {
+    background-color: #66BB6A;
+    transform: translateY(-3px);
+    box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.3),
+                -8px -8px 16px rgba(255, 255, 255, 0.9);
+}
+
+.add-item-button:active {
+    background-color: #388E3C;
+    transform: translateY(1px);
+    box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.2),
+                inset -3px -3px 6px rgba(255, 255, 255, 0.6);
+}
+
+/* Item Grid (Flexbox for layout - REVISED) */
+.item-grid {
+    display: flex; /* Changed to flex for more control over wrapping */
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    justify-content: center; /* Center items in the row */
+    gap: 30px; /* Space between cards */
+    width: 100%; /* Take full width of main-content-wrapper */
+    padding-bottom: 40px;
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+/* Individual Item Card (Glassmorphic) */
+.item-card {
+    /* Glassmorphism properties */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 20px 0 rgba(31, 38, 135, 0.2);
+    
+    padding: 25px;
+    border-radius: 18px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: all 0.3s ease;
+
+    /* Flex item sizing */
+    flex: 0 0 auto; /* Don't grow, don't shrink, base on content */
+    width: 280px; /* Fixed width for card */
+    max-width: calc(100% - 60px); /* Max width for responsiveness with gap/padding */
+}
+
+.item-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px 0 rgba(31, 38, 135, 0.3);
+}
+
+.item-card img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.item-card h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #ffffff;
+    font-size: 1.8em;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.item-card h2 a {
+    text-decoration: none;
+    color: #ffffff;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.item-card h2 a:hover {
+    color: #e0f2f7;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
+}
+
+.item-card p {
+    margin: 6px 0;
+    color: #e0e0e0;
+    font-size: 1.05em;
+}
+
+.item-card strong {
+    color: #ffffff;
+}
+
+.item-card small {
+    color: #b0e0e6;
+    font-size: 0.9em;
+    margin-top: 5px;
+    display: block;
+}
+
+/* No items message */
+.no-items-message {
+    font-size: 1.5em;
+    color: #e0e0e0;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    margin-top: 50px;
+    text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .main-content-wrapper {
+        padding: 10px; /* Less padding on smaller screens */
+    }
+    .auth-links {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+    .auth-links a,
+    .auth-links button {
+        margin: 5px 8px;
+    }
+    h1 {
+        font-size: 2.2em;
+    }
+    .add-item-button {
+        padding: 10px 20px;
+        font-size: 1em;
+        border-radius: 12px;
+    }
+    .item-grid {
+        gap: 20px; /* Slightly less gap on smaller screens */
+        padding: 0; /* Remove padding from grid itself, wrapper handles it */
+    }
+    .item-card {
+        padding: 20px;
+        border-radius: 15px;
+        width: 100%; /* Cards take full width on very small screens */
+        max-width: 100%; /* Ensure it doesn't exceed 100% */
+    }
+    .item-card h2 {
+        font-size: 1.6em;
+    }
+    .item-card p {
+        font-size: 1em;
+    }
+}
